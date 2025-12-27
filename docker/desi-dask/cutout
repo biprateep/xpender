@@ -1,0 +1,25 @@
+#! /bin/bash
+
+unset LD_LIBRARY_PATH
+
+# Don't add ~/.local/ to Python's sys.path
+export PYTHONNOUSERSITE=1
+
+# Force MKL single-threaded
+# https://software.intel.com/en-us/articles/using-threaded-intel-mkl-in-multi-thread-application
+export MKL_NUM_THREADS=1
+export OMP_NUM_THREADS=1
+# To avoid problems with MPI and Python multiprocessing
+export MPICH_GNI_FORK_MODE=FULLCOPY
+export KMP_AFFINITY=disabled
+
+# To avoid:
+# /homedir/.config/matplotlib is not a writable directory
+# Matplotlib created a temporary cache directory at /tmp/matplotlib-0surrcbg because there was an issue with the default path (/homedir/.config/matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+export TMPCACHE=$(mktemp -d)
+export MPLCONFIGDIR=$TMPCACHE/matplotlib
+mkdir "$MPLCONFIGDIR"
+cp -r "$HOME/.config/matplotlib" "$MPLCONFIGDIR"
+
+
+/usr/bin/python3 -u /app/imagine/cutout.py "$@"
