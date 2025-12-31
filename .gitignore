@@ -1,0 +1,51 @@
+# Byte-compiled / optimized / DLL files
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+**/.venv/
+**/venv/
+**/env/
+
+# Distribution / packaging
+**/build/
+**/dist/
+*.egg-info/
+.eggs/
+
+# Jupyter
+**/.ipynb_checkpoints/
+**/profile_default/
+
+# Logs / debugging
+*.log
+**/logs/
+**/wandb/
+
+# Model artifacts & datasets
+**/checkpoints/
+**/outputs/
+*.pt
+*.pth
+*.ckpt
+*.npz
+*.npy
+*.h5
+
+# IDE / editor
+**/.vscode/
+**/.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dask / temp
+**/.dask-worker-space/
+**/.dask/
+
+# Docker
+*.pid
+*.seed
+
