@@ -49,3 +49,9 @@ Thumbs.db
 *.pid
 *.seed
 
+# Hydra
+multirun/
+.hydra/
+
+# Slurm
+*slurm-*.out
